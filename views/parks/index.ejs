@@ -1,0 +1,25 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Welcome to MyParks!</h1>
+            <p>View our featured National Parks around the United States. Plan your next adventure with a handful of tips shared by other users!</h1>
+            <p><a class="btn btn-primary btn-large" href="/parks/new">Add New Park</a></p>
+        </div>
+    </header>
+    
+    <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+        <% parks.forEach(function(park){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                    <img class="img-fluid img-index" alt="Responsive image" src="<%= park.image %>">
+                    <div class="caption"><h4><%= park.name %></h4></div>
+                    <p><a class="btn btn-primary" href="/parks/<%= park._id %>">More Info</a></p>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+<%- include("../partials/footer") %>

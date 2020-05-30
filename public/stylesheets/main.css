@@ -1,0 +1,51 @@
+#landing-navbar {
+    margin-bottom: 0;
+}
+
+h1 .title {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.landing {
+    background-image: url("https://www.nps.gov/npgallery/GetAsset/aa54464a-456e-4c00-8ef1-708b2d22a03f/proxy/hires?");
+    text-align: center;
+    height: 1000px;
+}
+
+.link {
+    margin: 20px auto;
+    font-size: 20px;
+    max-width: 600px;
+    text-align: center;
+}
+
+.thumbnail {
+    padding: 0;
+    overflow: hidden;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail .img-index {
+    height: 200px;
+}
+
+.thumbnail .img-show {
+    height: 500px;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+#delete-form {
+    display: inline;
+}
+
+.delete-form {
+    display: inline;
+}
