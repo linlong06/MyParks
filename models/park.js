@@ -23,6 +23,12 @@ var parkSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "Blog"
         }
+    ],
+    photos: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Photo"
+        }
     ]
 });
 

@@ -1,6 +1,7 @@
 var Park            = require("../models/park"),
     Comment         = require("../models/comment"),
-    Blog         = require("../models/blog");
+    Blog         = require("../models/blog"),
+    Photo         = require("../models/photo");
     
 var middlewareObj = {};
 
@@ -30,6 +31,25 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
                 req.flash("error", "Comment not found!");
                 res.redirect("back");
             } else if (foundComment.author.id.equals(req.user._id)) {
+                return next();
+            } else {
+                req.flash("error", "You don't have permission to do that!");
+                res.redirect("back");
+            }
+        });
+    } else {
+        req.flash("error", "You need to log in to do that!");
+        res.redirect("back");
+    }
+}
+
+middlewareObj.checkPhotoOwnership = function(req, res, next) {
+    if (req.isAuthenticated()) {
+        Photo.findById(req.params.photo_id, function(err, foundPhoto){
+            if (err) {
+                req.flash("error", "Photo not found!");
+                res.redirect("back");
+            } else if (foundPhoto.author.id.equals(req.user._id)) {
                 return next();
             } else {
                 req.flash("error", "You don't have permission to do that!");

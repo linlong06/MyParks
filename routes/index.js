@@ -8,6 +8,14 @@ router.get("/", function(req, res){
     res.render("landing");
 });
 
+router.get("/game", function(req, res){
+    res.render("game");
+});
+
+router.get("/quiz", function(req, res){
+    res.render("quiz");
+});
+
 //===============
 // AUTH ROUTEs
 //===============

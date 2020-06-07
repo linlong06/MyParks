@@ -1,0 +1,16 @@
+<!-- Add Jumbotrons -->
+
+	<div class="jumbotron">
+		<h1><i class="fa fa-camera-retro"></i></span> The Image Gallery</h1>
+		<p>A bunch of beautiful pictures of <%= park.name %> contributed by users around the world</p>
+		<p><a class="btn btn-primary btn-large" href="/parks/<%= park._id %>/photos/new">Add New Photograph</a></p>
+	</div>
+	
+<!-- Add grid of pictures -->
+	<div class="row">
+		<% park.photos.forEach(function(photo){ %>
+			<div class="col-lg-4 col-md-6 gallery">
+				<img src="<%= photo.url %>" class="grayborder img-fluid" alt="Responsive image">
+			</div>
+		<% }) %>
+	</div>

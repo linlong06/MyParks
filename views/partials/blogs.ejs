@@ -1,0 +1,26 @@
+<h1>Share your travel blogs for <%= park.name %>!</h1>
+
+<div class="well">
+    <div class="text-right">
+        <a class="btn btn-success" href="/parks/<%= park._id %>/blogs/new">Add New Blogs</a>
+    </div>
+    <hr>
+    <% park.blogs.forEach(function(blog){ %>
+        <div class="row">
+            <div class="col-md-12 blog">
+                <a href="<%= blog.source %>" class="blogTitle"><%= blog.title %></a>
+                <p>
+                    <%= blog.description.substring(0, 300) %>... 
+                </p>
+                <% if(currentUser && blog.author.id.equals(currentUser._id)){ %>
+                    <a class="btn btn-xs btn-warning" 
+                       href="/parks/<%=park._id %>/blogs/<%=blog._id %>/edit">Edit</a>
+                    <form class="delete-form" action="/parks/<%=park._id %>/blogs/<%=blog._id %>?_method=DELETE" method="POST">
+                        <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                    </form>
+                <% } %>
+                <hr>
+            </div>
+        </div>
+    <% }) %>
+</div>

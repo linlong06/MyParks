@@ -1,0 +1,19 @@
+<%- include("partials/header") %>
+
+<link rel="stylesheet" type="text/css" href="stylesheets/quiz.css">
+
+<h1>Quiz on National Park Photograph Recognition</h1>
+<div>
+    <a href="/quiz"><button type="button" class="btn btn-primary btn-block link" >Start Over</button></a>
+</div>
+<div class="container quiz-container">
+  <div id="quiz"></div>
+  <div>
+    <button id="previous">Previous Question</button>
+    <button id="next">Next Question</button>
+    <button id="submit">Submit Quiz</button>
+  </div>
+  <div id="results"></div>
+</div>
+<script type="text/javascript" src="scripts/quiz.js"></script>
+<%- include("partials/footer") %>

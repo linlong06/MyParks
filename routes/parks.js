@@ -1,6 +1,6 @@
 var express         = require("express"),
     router          = express.Router(),
-    Park      = require("../models/park"),
+    Park            = require("../models/park"),
     middleware      = require("../middleware/index")
 
 //INDEX: Show all parks
@@ -40,7 +40,7 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
 
 // SHOW: show more info about a park
 router.get("/:id", function(req, res){
-    Park.findById(req.params.id).populate("comments").exec(function(err, foundPark){
+    Park.findById(req.params.id).populate("comments").populate("blogs").populate("photos").exec(function(err, foundPark){
         if (err) {
             console.log(err);
         } else {

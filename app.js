@@ -10,12 +10,14 @@ var express             = require("express"),
     Comment             = require("./models/comment"),
     Park                = require("./models/park"),
     Blog                = require("./models/blog"),
+    Photo               = require("./models/photo"),
     seedDB              = require("./seed");
 
 var indexRoutes         = require("./routes/index"),
     parkRoutes          = require("./routes/parks"),
     commentRoutes       = require("./routes/comments"),
-    blogRoutes          = require("./routes/blogs");
+    blogRoutes          = require("./routes/blogs"),
+    photoRoutes          = require("./routes/photos");
 
 // express and DB configuration
 var app = express();
@@ -51,6 +53,7 @@ app.use("/", indexRoutes);
 app.use("/parks", parkRoutes);
 app.use("/parks/:id/comments", commentRoutes);
 app.use("/parks/:id/blogs", blogRoutes);
+app.use("/parks/:id/photos", photoRoutes);
 
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log("Server has started!"); 

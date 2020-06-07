@@ -49,3 +49,16 @@ h1 .title {
 .delete-form {
     display: inline;
 }
+
+.blogTitle {
+    font-size: 3rem;
+}
+
+.gallery {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.gallery .img-fluid {
+    height: 200px;
+}

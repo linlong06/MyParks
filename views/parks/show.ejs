@@ -1,56 +1,29 @@
 <%- include("../partials/header") %>
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-md-3">
             <p class="lead"> <%= park.name.slice(0, -14) %></p>
-            <div class="list-group">
-                <li class="list-group-item active">INTRODUCTION</li>
-                <li class="list-group-item">GALLERY</li>
-                <li class="list-group-item">BLOGS</li>
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="list-intro-list" data-toggle="list" href="#list-intro" role="tab" aria-controls="intro">INTRODUCTION</a>
+                <a class="list-group-item list-group-item-action" id="list-gallery-list" data-toggle="list" href="#list-gallery" role="tab" aria-controls="gallery">GALLERY</a>
+                <a class="list-group-item list-group-item-action" id="list-blogs-list" data-toggle="list" href="#list-blogs" role="tab" aria-controls="blogs">BLOGS</a>
             </div>
         </div>
         
         <div class="col-md-9">
-            <div class="thumbnail">
-                <img class="img-fluid img-show" src="<%= park.image %>">
-                <div class="caption-full">
-                    <h4 class="pull-right">State (to be updated) </h4>
-                    <h4><a><%= park.name %></a></h4>
-                    <p><%= park.description %></p>
-                    <p><em>Submitted by <%= park.author.username %></em></p>
-                    <% if(currentUser && park.author.id.equals(currentUser._id)){ %>
-                        <a class="btn btn-xs btn-warning" href="/parks/<%= park._id %>/edit">Edit</a>
-                        <form id="delete-form" action="/parks/<%= park._id %>?_method=DELETE" method="POST">
-                            <button class="btn btn-xs btn-danger">Delete</button>
-                        </form>
-                    <% } %>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane active" id="list-intro" role="tabpanel" aria-labelledby="list-intro-list">
+                    <%- include("../partials/parkintro") %>
                 </div>
-            </div>
-            
-            <div class="well">
-                <div class="text-right">
-                    <a class="btn btn-success" href="/parks/<%= park._id %>/comments/new">Add New Comment</a>
+                <div class="tab-pane" id="list-gallery" role="tabpanel" aria-labelledby="list-gallery-list">
+                    <%- include("../partials/gallery") %>
                 </div>
-                <hr>
-                <% park.comments.forEach(function(comment){ %>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <strong><%= comment.author.username %></strong>
-                            <span class="pull-right">10 days ago</span>
-                            <p>
-                                <%= comment.text %> 
-                            </p>
-                            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-                                <a class="btn btn-xs btn-warning" 
-                                   href="/parks/<%=park._id %>/comments/<%=comment._id %>/edit">Edit</a>
-                                <form class="delete-form" action="/parks/<%=park._id %>/comments/<%=comment._id %>?_method=DELETE" method="POST">
-                                    <input type="submit" class="btn btn-xs btn-danger" value="Delete">
-                                </form>
-                            <% } %>
-                        </div>
-                    </div>
-                <% }) %>
+                    
+                <div class="tab-pane" id="list-blogs" role="tabpanel" aria-labelledby="list-blogs-list">
+                    <%- include("../partials/blogs") %>
+                </div>
+                
             </div>
         </div>
     </div>
